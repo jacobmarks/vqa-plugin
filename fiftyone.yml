@@ -1,0 +1,8 @@
+fiftyone:
+  version: "~0.21.0"
+name: "vqa"
+version: "1.0.0"
+description: "Perform visual question answering on your images"
+url: "https://github.com/jacobmarks/vqa-plugin/blob/main/README.md"
+operators:
+  - answer_visual_question
