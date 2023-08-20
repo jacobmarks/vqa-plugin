@@ -5,6 +5,7 @@
 |
 """
 
+
 from PIL import Image
 from transformers import pipeline
 
@@ -55,22 +56,16 @@ class VQA(foo.Operator):
             inputs.str("question", label="Question", required=True)
         return types.Property(inputs, view=form_view)
 
-        
-
     def execute(self, ctx):
         sample = ctx.dataset[ctx.selected[0]]
         filepath = get_filepath(sample)
-        image =  Image.open(filepath)
+        image = Image.open(filepath)
 
         question = ctx.params.get("question", "None provided")
         vqa_pipeline = pipeline("visual-question-answering")
         response = vqa_pipeline(image, question, top_k=1)
 
-        return {
-            "question": question,
-            "answer": response[0]["answer"]
-            }
-       
+        return {"question": question, "answer": response[0]["answer"]}
 
     def resolve_output(self, ctx):
         outputs = types.Object()

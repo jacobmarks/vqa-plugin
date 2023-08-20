@@ -1,14 +1,12 @@
 ## Visual Question Answering Plugin
 
-
 This plugin is a Python plugin that allows you to answer visual questions about images in your dataset!
 
 It demonstrates how to do the following:
 
--   Run a local model on your dataset
--   Use `ctx.selected` to operate on only selected samples
--   Pass data from `execute()` to `resolve_output()`
-
+- Run a local model on your dataset
+- Use `ctx.selected` to operate on only selected samples
+- Pass data from `execute()` to `resolve_output()`
 
 ### Supported Models
 
@@ -28,9 +26,8 @@ Install the Hugging Face transformers library:
 pip install transformers
 ```
 
-
 ## Operators
 
 ### `answer_visual_question`
 
--   Generates an image from a text prompt and adds it to the dataset
+- Generates an image from a text prompt and adds it to the dataset
