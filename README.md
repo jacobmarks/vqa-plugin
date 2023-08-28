@@ -59,3 +59,6 @@ fiftyone plugins download https://github.com/jacobmarks/vqa-plugin
 To use this plugin, you must have exactly one sample selected in your dataset.
 Here are the messages you will see when you have zero, one, or more than one
 sample selected:
+
+![vqa_selected](https://github.com/jacobmarks/vqa-plugin/assets/12500356/73b1f2c6-eedd-4534-85c6-df1349ec6c58)
+
