@@ -47,11 +47,6 @@ class VQAModel:
     def __init__(self):
         pass
 
-    # def _get_image(self, sample):
-    #     filepath = get_filepath(sample)
-    #     image = Image.open(filepath)
-    #     return image
-
     def __call__(self, sample, question):
         pass
 
