@@ -53,3 +53,9 @@ fiftyone plugins download https://github.com/jacobmarks/vqa-plugin
 
 - Applies the selected visual question answering model to the selected sample in
   your dataset and outputs the answer.
+
+## Usage
+
+To use this plugin, you must have exactly one sample selected in your dataset.
+Here are the messages you will see when you have zero, one, or more than one
+sample selected:
