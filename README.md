@@ -1,5 +1,7 @@
 ## Visual Question Answering Plugin
 
+![vqa_sizzle](https://github.com/jacobmarks/vqa-plugin/assets/12500356/c42a7ead-bb33-4fe2-8450-c6575822a27f)
+
 This plugin is a Python plugin that allows you to answer visual questions about
 images in your dataset!
 
