@@ -93,11 +93,13 @@ def run_vqa(sample, question, model_name):
 class VQA(foo.Operator):
     @property
     def config(self):
-        return foo.OperatorConfig(
+        _config = foo.OperatorConfig(
             name="answer_visual_question",
             label="VQA: Answer question about selected image",
             dynamic=True,
         )
+        _config.icon = "/assets/question_icon.svg"
+        return _config
 
     def resolve_input(self, ctx):
         inputs = types.Object()
