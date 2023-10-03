@@ -1,5 +1,5 @@
 fiftyone:
-  version: "~0.21.0"
+  version: ">=0.21.0"
 name: "@jacobmarks/vqa"
 version: "1.0.0"
 description: "Perform visual question answering on your images"
