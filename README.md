@@ -1,6 +1,6 @@
 ## Visual Question Answering Plugin
 
-![vqa_sizzle](https://github.com/jacobmarks/vqa-plugin/assets/12500356/c42a7ead-bb33-4fe2-8450-c6575822a27f)
+![vqa_updated](https://github.com/jacobmarks/vqa-plugin/assets/12500356/67819454-19e3-4b4a-861f-afed465f4866)
 
 ### Updates
 
