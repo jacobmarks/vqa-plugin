@@ -2,6 +2,13 @@
 
 ![vqa_sizzle](https://github.com/jacobmarks/vqa-plugin/assets/12500356/c42a7ead-bb33-4fe2-8450-c6575822a27f)
 
+### Updates
+
+- **2023-10-24**: Added support for Llava-13b and Fuyu-8b models from
+  [Replicate](https://replicate.com/).
+
+## Plugin Overview
+
 This plugin is a Python plugin that allows you to answer visual questions about
 images in your dataset!
 
@@ -13,11 +20,12 @@ It demonstrates how to do the following:
 
 ### Supported Models
 
-This version of the plugin supports the default Vision Language Transformer
-(ViLT) model used in the [Visual Question Answering pipeline](https://huggingface.co/tasks/visual-question-answering)
-in the Hugging Face transformers library, as well as Salesforce's
-[BLIPv2](https://replicate.com/andreasjansson/blip-2) via
-[Replicate](https://replicate.com/).
+This version of the plugin supports the following models:
+
+- [Fuyu-8b](https://replicate.com/lucataco/fuyu-8b/) from Adept AI (via [Replicate](https://replicate.com/))
+- [Llava-13b](https://replicate.com/yorickvp/llava-13b) (via [Replicate](https://replicate.com/))
+- [ViLT](https://huggingface.co/transformers/model_doc/vilt.html) (default Vision Language Transformer used in the [Visual Question Answering pipeline](https://huggingface.co/tasks/visual-question-answering))
+- [BLIPv2](https://replicate.com/andreasjansson/blip-2) (via [Replicate](https://replicate.com/))
 
 Feel free to fork this plugin and add support for other models!
 
@@ -63,4 +71,3 @@ Here are the messages you will see when you have zero, one, or more than one
 sample selected:
 
 ![vqa_selected](https://github.com/jacobmarks/vqa-plugin/assets/12500356/73b1f2c6-eedd-4534-85c6-df1349ec6c58)
-

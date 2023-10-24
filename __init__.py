@@ -76,11 +76,45 @@ class BLIP2VQAModel(VQAModel):
         return response
 
 
+class Fuyu8bVQAModel(VQAModel):
+    """Wrapper around Replicate Fuyu8b model."""
+
+    def __call__(self, sample, question):
+        filepath = get_filepath(sample)
+        response = replicate.run(
+            "lucataco/fuyu-8b:42f23bc876570a46f5a90737086fbc4c3f79dd11753a28eaa39544dd391815e9",
+            input={"image": open(filepath, "rb"), "prompt": question},
+        )
+        return response.lstrip()
+
+
+class Llava13bVQAModel(VQAModel):
+    """Wrapper around Replicate Llava13b model."""
+
+    def __call__(self, sample, question):
+        filepath = get_filepath(sample)
+        response = replicate.run(
+            "yorickvp/llava-13b:2facb4a474a0462c15041b78b1ad70952ea46b5ec6ad29583c0b29dbd4249591",
+            input={"image": open(filepath, "rb"), "prompt": question},
+        )
+
+        resp_string = ""
+        for r in response:
+            resp_string += r
+        return resp_string
+
+
+MODEL_MAPPING = {
+    "vilt": ViLTVQAModel,
+    "blip2": BLIP2VQAModel,
+    "fuyu": Fuyu8bVQAModel,
+    "llava": Llava13bVQAModel,
+}
+
+
 def _get_vqa_model(model_name):
-    if model_name == "vilt":
-        return ViLTVQAModel()
-    if model_name == "blip2":
-        return BLIP2VQAModel()
+    if model_name in MODEL_MAPPING:
+        return MODEL_MAPPING[model_name]()
 
     raise ValueError(f"Model {model_name} not found.")
 
@@ -88,6 +122,18 @@ def _get_vqa_model(model_name):
 def run_vqa(sample, question, model_name):
     model = _get_vqa_model(model_name)
     return model(sample, question)
+
+
+def _add_replicate_models(model_choices):
+    if allows_replicate_models():
+        model_choices.add_choice("blip2", label="BLIP2")
+        model_choices.add_choice("fuyu", label="Fuyu8b")
+        model_choices.add_choice("llava", label="Llava13b")
+
+
+def _add_hf_models(model_choices):
+    if allows_hf_models():
+        model_choices.add_choice("vilt", label="ViLT")
 
 
 class VQA(foo.Operator):
@@ -107,27 +153,25 @@ class VQA(foo.Operator):
             label="VQA", description="Ask a question about the selected image!"
         )
 
-        blip_flag = allows_replicate_models()
-        vilt_flag = allows_hf_models()
-        if not blip_flag and not vilt_flag:
+        rep_flag = allows_replicate_models()
+        hf_flag = allows_hf_models()
+        if not rep_flag and not hf_flag:
             inputs.message(
                 "message",
                 label="No models available. Please set up your environment variables.",
             )
             return types.Property(inputs)
 
-        radio_choices = types.RadioGroup()
-        if blip_flag:
-            radio_choices.add_choice("blip2", label="BLIP2")
-        if vilt_flag:
-            radio_choices.add_choice("vilt", label="ViLT")
+        model_choices = types.RadioGroup()
+        _add_replicate_models(model_choices)
+        _add_hf_models(model_choices)
 
         inputs.enum(
             "model_name",
-            radio_choices.values(),
-            default=radio_choices.choices[0].value,
+            model_choices.values(),
             label="Model",
-            view=radio_choices,
+            view=model_choices,
+            required=True,
         )
 
         num_selected = len(ctx.selected)
