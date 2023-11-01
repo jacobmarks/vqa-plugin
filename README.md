@@ -12,12 +12,6 @@
 This plugin is a Python plugin that allows you to answer visual questions about
 images in your dataset!
 
-It demonstrates how to do the following:
-
-- Run a local model on your dataset
-- Use `ctx.selected` to operate on only selected samples
-- Pass data from `execute()` to `resolve_output()`
-
 ### Supported Models
 
 This version of the plugin supports the following models:
@@ -28,6 +22,10 @@ This version of the plugin supports the following models:
 - [BLIPv2](https://replicate.com/andreasjansson/blip-2) (via [Replicate](https://replicate.com/))
 
 Feel free to fork this plugin and add support for other models!
+
+## Watch On Youtube
+[![Video Thumbnail](https://img.youtube.com/vi/agNvjKH9rIQ/0.jpg)](https://www.youtube.com/watch?v=agNvjKH9rIQ&list=PLuREAXoPgT0RZrUaT0UpX_HzwKkoB-S9j&index=3)
+
 
 ## Installation
 
