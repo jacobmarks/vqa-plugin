@@ -40,6 +40,7 @@ def get_filepath(sample):
         sample.local_path if hasattr(sample, "local_path") else sample.filepath
     )
 
+
 class VQAModel:
     """Wrapper around a VQA model."""
 
@@ -49,17 +50,18 @@ class VQAModel:
     def __call__(self, sample, question):
         pass
 
+
 class Idefics2_8bVQAModel(VQAModel):
     """Wrapper around Replicate Idefics2-8b model."""
 
-    def __call__(self, sample):
+    def __call__(self, sample, question):
         filepath = get_filepath(sample)
-        question = get_question(sample)
         response = replicate.run(
             "lucataco/idefics-8b:7ab312514f213130c4a2db68b93a1719f5cc7c3246c408ba91d507b212a24303",
             input={"image": open(filepath, "rb"), "prompt": question},
         )
         return response.strip()
+
 
 class ViLTVQAModel(VQAModel):
     """Wrapper around a Hugging Face ViLT VQA model."""

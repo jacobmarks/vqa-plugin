@@ -4,6 +4,8 @@
 
 ### Updates
 
+- **2024-05-03**: [@harpreetsahota204](https://github.com/harpreetsahota204) added support for Idefics-8b model from
+  [Replicate](https://replicate.com/).
 - **2023-10-24**: Added support for Llava-13b and Fuyu-8b models from
   [Replicate](https://replicate.com/).
 
@@ -20,12 +22,13 @@ This version of the plugin supports the following models:
 - [Llava-13b](https://replicate.com/yorickvp/llava-13b) (via [Replicate](https://replicate.com/))
 - [ViLT](https://huggingface.co/transformers/model_doc/vilt.html) (default Vision Language Transformer used in the [Visual Question Answering pipeline](https://huggingface.co/tasks/visual-question-answering))
 - [BLIPv2](https://replicate.com/andreasjansson/blip-2) (via [Replicate](https://replicate.com/))
+- [Idefics2-8b](https://replicate.com/lucataco/idefics-8b) from Hugging Face (via [Replicate](https://replicate.com/))
 
 Feel free to fork this plugin and add support for other models!
 
 ## Watch On Youtube
-[![Video Thumbnail](https://img.youtube.com/vi/agNvjKH9rIQ/0.jpg)](https://www.youtube.com/watch?v=agNvjKH9rIQ&list=PLuREAXoPgT0RZrUaT0UpX_HzwKkoB-S9j&index=3)
 
+[![Video Thumbnail](https://img.youtube.com/vi/agNvjKH9rIQ/0.jpg)](https://www.youtube.com/watch?v=agNvjKH9rIQ&list=PLuREAXoPgT0RZrUaT0UpX_HzwKkoB-S9j&index=3)
 
 ## Installation
 
