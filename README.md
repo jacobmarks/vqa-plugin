@@ -4,6 +4,15 @@
 
 ### Updates
 
+- **2024-05-07**: Major updates:
+
+  - Added support for Moondream2 model.
+  - Added support for reading question from field on the sample.
+  - Added support for storing the answer in a field on the sample.
+  - Added support for applying to all samples in the current view (one at a time).
+  - Added support for delegated execution.
+  - Added support for Python operator execution.
+
 - **2024-05-03**: [@harpreetsahota204](https://github.com/harpreetsahota204) added support for Idefics-8b model from
   [Replicate](https://replicate.com/).
 - **2023-10-24**: Added support for Llava-13b and Fuyu-8b models from
@@ -23,6 +32,7 @@ This version of the plugin supports the following models:
 - [ViLT](https://huggingface.co/transformers/model_doc/vilt.html) (default Vision Language Transformer used in the [Visual Question Answering pipeline](https://huggingface.co/tasks/visual-question-answering))
 - [BLIPv2](https://replicate.com/andreasjansson/blip-2) (via [Replicate](https://replicate.com/))
 - [Idefics2-8b](https://replicate.com/lucataco/idefics-8b) from Hugging Face (via [Replicate](https://replicate.com/))
+- Moondream2 via [Hugging Face Transformers](https://huggingface.co/vikhyatk/moondream2) and via [Replicate](https://replicate.com/lucataco/moondream2)
 
 Feel free to fork this plugin and add support for other models!
 
@@ -67,8 +77,30 @@ fiftyone plugins download https://github.com/jacobmarks/vqa-plugin
 
 ## Usage
 
-To use this plugin, you must have exactly one sample selected in your dataset.
-Here are the messages you will see when you have zero, one, or more than one
-sample selected:
+The recommended interactive way to use this plugin is in the FiftyOne App with exactly one sample selected.
 
-![vqa_selected](https://github.com/jacobmarks/vqa-plugin/assets/12500356/73b1f2c6-eedd-4534-85c6-df1349ec6c58)
+### Python Operator Execution
+
+If you want to loop over samples in your dataset or view, you may be interested in using the Python operator execution mode.
+
+```python
+import fiftyone as fo
+import fiftyone.operators as foo
+import fiftyone.zoo as foz
+
+dataset = foz.load_zoo_dataset("quickstart", max_samples=5)
+
+## Access the operator via its URI (plugin name + operator name)
+vqa = foo.get_operator("@jacobmarks/vqa/answer_visual_question")
+
+## Apply the operator to the dataset
+vqa(
+    dataset,
+    model_name="llava",
+    question="Describe the image",
+    answer_field="llava_answer",
+)
+
+## Print the answers
+print(dataset.values("llava_answer"))
+```

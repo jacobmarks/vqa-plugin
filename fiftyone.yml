@@ -1,7 +1,7 @@
 fiftyone:
-  version: ">=0.21.0"
+  version: ">=0.23.8"
 name: "@jacobmarks/vqa"
-version: "1.0.2"
+version: "1.1.0"
 description: "Perform visual question answering on your images"
 url: "https://github.com/jacobmarks/vqa-plugin/blob/main/README.md"
 operators:
